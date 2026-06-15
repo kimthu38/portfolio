@@ -110,7 +110,8 @@ export function Projects() {
           <div className="flex flex-col items-center gap-12 bg-primary/10 dark:bg-transparent rounded-lg p-8">
             <Image
               src={GetShitDoneImage}
-              alt="Background line pattern"
+              alt=""
+              aria-hidden="true"
               width={640}
               height={360}
               className="self-center object-contain w-[200px] md:w-[250px] h-auto"
