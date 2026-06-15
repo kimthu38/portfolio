@@ -113,7 +113,7 @@ export function Projects() {
               alt="Background line pattern"
               width={640}
               height={360}
-              className="hidden self-center object-contain md:block w-[200px] md:w-[250px] h-auto"
+              className="self-center object-contain w-[200px] md:w-[250px] h-auto"
             />
           </div>
         </div>

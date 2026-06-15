@@ -75,8 +75,9 @@ export default function RootLayout({
             src={BgLineImage}
             alt="Background line pattern"
             width={200}
-            height={300}
-            className="pointer-events-none absolute -inset-10 -z-10 h-[300px] w-[200px] object-cover rotate-90 opacity-20"
+            height={168}
+            loading="eager"
+            className="pointer-events-none absolute -inset-10 -z-10 h-auto w-[250px] md:w-[300px] object-cover rotate-90 opacity-30"
           />
           {children}
         </ThemeProvider>
