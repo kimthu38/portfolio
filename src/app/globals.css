@@ -121,10 +121,13 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    @apply scroll-smooth font-sans;
+  }
   body {
     @apply bg-background text-foreground;
   }
-  html {
-    @apply font-sans;
+  ::selection {
+    @apply bg-violet-500/30 text-violet-950 dark:text-violet-50;
   }
 }
