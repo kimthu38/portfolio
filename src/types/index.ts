@@ -7,18 +7,18 @@ export interface SocialLink {
 export interface Skill {
   name: string;
   icon: string;
-  category: "frontend" | "tools" | "backend";
+  category: "languages" | "frameworks" | "tools";
 }
 
 export interface Project {
   id: string;
   title: string;
-  description: string;
-  image: string;
-  imageAlt: string;
+  description: string[];
+  image?: string;
+  imageAlt?: string;
   tags: string[];
-  githubUrl: string;
-  liveUrl: string;
+  githubUrl?: string;
+  liveUrl?: string;
   featured?: boolean;
 }
 
@@ -27,7 +27,7 @@ export interface Experience {
   title: string;
   organization: string;
   period: string;
-  description: string;
+  description: string[];
   type: "work" | "education" | "milestone";
 }
 

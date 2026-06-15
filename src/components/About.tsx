@@ -13,7 +13,7 @@ export function About() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           label="About"
-          title="Building the web, one component at a time"
+          title="Building the web"
           description="A quick look at who I am and what drives my work."
         />
 

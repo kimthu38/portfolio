@@ -1,3 +1,6 @@
+import html5Logo from '@/assets/html5-logo.svg'
+import javascriptLogo from '@/assets/javascript-logo.svg'
+
 import {
   Code2,
   Database,
@@ -35,6 +38,8 @@ export const iconMap: Record<string, LucideIcon> = {
   sparkles: Sparkles,
   terminal: Terminal,
   zap: Zap,
+  html: html5Logo,
+  javascript: javascriptLogo,
 };
 
 export function getIcon(name: string): LucideIcon {

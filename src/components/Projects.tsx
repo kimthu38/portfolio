@@ -31,7 +31,7 @@ export function Projects() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading
           label="Projects"
-          title="Selected work & side projects"
+          title="Featured projects"
           description="A collection of projects that showcase my skills in modern frontend development."
         />
 
@@ -49,29 +49,50 @@ export function Projects() {
               whileHover={{ y: -8, transition: { duration: 0.25 } }}
               className="group overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-shadow hover:border-zinc-300 hover:shadow-xl hover:shadow-violet-500/5 dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-zinc-700"
             >
-              <div className="relative aspect-video overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.imageAlt}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-zinc-950/80 via-transparent to-transparent" />
-                {project.featured && (
-                  <span className="absolute top-4 left-4 rounded-full border border-violet-500/30 bg-violet-500/20 px-3 py-1 text-xs font-medium text-violet-300">
-                    Featured
-                  </span>
-                )}
-              </div>
+              {project.image && project.imageAlt ? (
+                <div className="relative aspect-video overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.imageAlt}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                  />
+                  <div className="absolute inset-0 bg-linear-to-t from-zinc-950/80 via-transparent to-transparent" />
+                  {project.featured && (
+                    <span className="absolute top-4 left-4 rounded-full border border-violet-500/30 bg-violet-500/20 px-3 py-1 text-xs font-medium text-violet-300">
+                      Featured
+                    </span>
+                  )}
+                </div>
+              ) : (
+                <div className="relative h-20 overflow-hidden bg-gradient-to-br from-violet-500/10 via-indigo-500/5 to-violet-500/10">
+                  <div className="absolute -right-4 -bottom-4 size-32 rounded-full bg-violet-500/10 blur-2xl" />
+                  <div className="absolute -left-4 -top-4 size-24 rounded-full bg-indigo-500/10 blur-2xl" />
+                  {project.featured && (
+                    <span className="absolute top-4 left-4 rounded-full border border-violet-500/30 bg-violet-500/20 px-3 py-1 text-xs font-medium text-violet-300">
+                      Featured
+                    </span>
+                  )}
+                </div>
+              )}
 
               <div className="p-6">
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
                   {project.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                  {project.description}
-                </p>
+
+                <ul className="mt-3 space-y-1.5">
+                  {project.description.map((point, i) => (
+                    <li
+                      key={i}
+                      className="flex gap-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400"
+                    >
+                      <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-violet-400" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
 
                 <div className="mt-4 flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
@@ -84,26 +105,32 @@ export function Projects() {
                   ))}
                 </div>
 
-                <div className="mt-6 flex items-center gap-4">
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
-                  >
-                    <GitFork className="size-4" />
-                    Code
-                  </a>
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-violet-400 transition-colors hover:text-violet-300"
-                  >
-                    <ExternalLink className="size-4" />
-                    Live Demo
-                  </a>
-                </div>
+                {(project.githubUrl || project.liveUrl) && (
+                  <div className="mt-6 flex items-center gap-4">
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
+                      >
+                        <GitFork className="size-4" />
+                        Code
+                      </a>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-violet-400 transition-colors hover:text-violet-300"
+                      >
+                        <ExternalLink className="size-4" />
+                        Live Demo
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
             </motion.article>
           ))}

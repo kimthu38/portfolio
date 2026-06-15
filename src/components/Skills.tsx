@@ -3,7 +3,14 @@
 import { SectionHeading } from "@/components/SectionHeading";
 import { portfolioData } from "@/data/portfolioData";
 import { getIcon } from "@/lib/icons";
+import type { Skill } from "@/types";
 import { motion } from "framer-motion";
+
+const GROUPS: { key: Skill["category"]; label: string }[] = [
+  { key: "languages", label: "Languages" },
+  { key: "frameworks", label: "Frameworks & Libraries" },
+  { key: "tools", label: "Tools & Platforms" },
+];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -39,23 +46,35 @@ export function Skills() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
-          className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4"
+          className="space-y-10"
         >
-          {skills.map((skill) => {
-            const Icon = getIcon(skill.icon);
+          {GROUPS.map((group) => {
+            const groupSkills = skills.filter((s) => s.category === group.key);
             return (
-              <motion.div
-                key={skill.name}
-                variants={itemVariants}
-                whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="group flex flex-col items-center gap-3 rounded-xl border border-zinc-200 bg-white p-5 transition-colors hover:border-violet-500/30 hover:bg-violet-500/5 dark:border-zinc-800 dark:bg-zinc-900/40"
-              >
-                <div className="flex size-10 items-center justify-center rounded-lg bg-violet-500/10 text-violet-400 transition-colors group-hover:bg-violet-500/20">
-                  <Icon className="size-5" />
+              <motion.div key={group.key} variants={itemVariants}>
+                <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+                  {group.label}
+                </h3>
+                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+                  {groupSkills.map((skill) => {
+                    const Icon = getIcon(skill.icon);
+                    return (
+                      <motion.div
+                        key={skill.name}
+                        variants={itemVariants}
+                        whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                        className="group flex flex-col items-center gap-3 rounded-xl border border-zinc-200 bg-white p-5 transition-colors hover:border-violet-500/30 hover:bg-violet-500/5 dark:border-zinc-800 dark:bg-zinc-900/40"
+                      >
+                        <div className="flex size-10 items-center justify-center rounded-lg bg-violet-500/10 text-violet-400 transition-colors group-hover:bg-violet-500/20">
+                          <Icon className="size-5" />
+                        </div>
+                        <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                          {skill.name}
+                        </span>
+                      </motion.div>
+                    );
+                  })}
                 </div>
-                <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                  {skill.name}
-                </span>
               </motion.div>
             );
           })}

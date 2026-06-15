@@ -79,9 +79,17 @@ export function Experience() {
                       <p className="mt-0.5 text-sm font-medium text-zinc-600 dark:text-zinc-400">
                         {item.organization}
                       </p>
-                      <p className="mt-3 text-sm leading-relaxed text-zinc-500">
-                        {item.description}
-                      </p>
+                      <ul className="mt-3 space-y-1.5 text-left">
+                        {item.description.map((point, i) => (
+                          <li
+                            key={i}
+                            className="flex gap-2 text-sm leading-relaxed text-zinc-500"
+                          >
+                            <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-violet-400" />
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 </motion.div>

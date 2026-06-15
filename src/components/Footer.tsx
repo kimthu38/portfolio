@@ -10,9 +10,6 @@ export function Footer() {
         <p className="text-sm text-zinc-500">
           © {year} {personal.name}. All rights reserved.
         </p>
-        <p className="text-sm text-zinc-600">
-          Built with Next.js, Tailwind CSS & Framer Motion
-        </p>
       </div>
     </footer>
   );
