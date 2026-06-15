@@ -20,7 +20,7 @@ const fadeUp = {
 };
 
 const stats = [
-  { value: "7+", label: "Years\nExperience" },
+  { value: "6+", label: "Years\nExperience" },
   { value: "4", label: "Companies\nWorked" },
   { value: "10+", label: "Projects\nDelivered" },
 ];
@@ -59,7 +59,7 @@ export function Hero() {
                 <span className="absolute inline-flex size-full animate-ping rounded-full bg-amber-400 opacity-60" />
                 <span className="relative inline-flex size-2 rounded-full bg-amber-400" />
               </span>
-              <span className="text-sm font-medium text-foreground/40">
+              <span className="text-sm font-medium text-foreground/40 bg-amber-400/20 px-3 py-1 rounded-full">
                 Available for new opportunities
               </span>
             </motion.div>
@@ -70,7 +70,7 @@ export function Hero() {
               variants={fadeUp}
               className="mb-2 text-sm font-semibold tracking-[0.2em] text-foreground/30 uppercase"
             >
-              Kim Thu Nguyen
+              Frontend Developer
             </motion.p>
 
             {/* Big heading */}
@@ -79,9 +79,9 @@ export function Hero() {
               variants={fadeUp}
               className="text-6xl font-extrabold leading-none tracking-tight sm:text-7xl lg:text-8xl"
             >
-              <span className="block text-foreground">Frontend</span>
+              <span className="block text-foreground">Kim Thu </span>
               <span className="block bg-gradient-to-r from-amber-300 via-amber-400 to-orange-400 bg-clip-text text-transparent">
-                Engineer.
+                Nguyen.
               </span>
             </motion.h1>
 
@@ -114,7 +114,7 @@ export function Hero() {
                 href="#projects"
                 className="group inline-flex items-center gap-2 rounded-full bg-amber-400 px-6 py-2.5 text-sm font-semibold text-amber-950 shadow-lg shadow-amber-400/20 transition-all hover:bg-amber-300 hover:shadow-amber-300/30"
               >
-                View Work
+                View Projects
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
               </a>
               <a

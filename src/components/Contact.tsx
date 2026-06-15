@@ -4,14 +4,15 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { portfolioData } from "@/data/portfolioData";
 import { motion } from "framer-motion";
 import { Mail, Send } from "lucide-react";
-import { FormEvent, useState } from "react";
+import { SyntheticEvent, useState } from "react";
+import Image from "next/image";
 
 export function Contact() {
   const { personal } = portfolioData;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsSubmitting(true);
     await new Promise((resolve) => setTimeout(resolve, 800));
@@ -56,14 +57,13 @@ export function Contact() {
                 {personal.email}
               </a>
             </div>
-
-            {/* Decorative amber block */}
-            <div className="hidden rounded-2xl border border-amber-400/10 bg-amber-400/[0.03] p-8 lg:block">
-              <p className="text-2xl font-bold leading-tight text-foreground/20">
-                &ldquo;Good design is as little design as possible.&rdquo;
-              </p>
-              <p className="mt-3 text-xs text-foreground/25">— Dieter Rams</p>
-            </div>
+            <Image
+              src="/contact-illustration.svg"
+              alt="Contact illustration"
+              width={400}
+              height={300}
+              className="w-full max-w-sm opacity-50"
+            />
           </motion.div>
 
           {/* Form */}

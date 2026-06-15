@@ -12,7 +12,7 @@ export function Projects() {
   return (
     <section id="projects" className="py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading label="Projects" title="Featured work" />
+        <SectionHeading label="Projects" title="Featured projects" />
 
         <div>
           {projects.map((project, index) => (

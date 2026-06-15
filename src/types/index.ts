@@ -40,6 +40,7 @@ export interface PortfolioData {
     location: string;
     about: string[];
     socialLinks: SocialLink[];
+    summary: string[];
   };
   skills: Skill[];
   projects: Project[];

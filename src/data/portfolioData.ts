@@ -11,9 +11,19 @@ export const portfolioData: PortfolioData = {
       "I'm a frontend developer passionate about building accessible, performant web experiences. I love turning complex problems into elegant, intuitive interfaces.",
       "With a strong foundation in React and the modern JavaScript ecosystem, I focus on clean architecture, thoughtful UX, and smooth animations that delight users without sacrificing speed.",
     ],
+    summary: [
+      "Frontend Developer with years of experience building scalable web applications, enterprise platforms, and customer-facing products.",
+      "Strong expertise in React.js, Next.js, Vue.js, Angular, TypeScript, and modern frontend architecture.",
+      "Experience building applications from scratch, establishing project architecture, and driving technical decisions throughout the development lifecycle.",
+      "Proven ability to lead frontend initiatives, mentor team members, conduct code reviews, and aintain high engineering standards.",
+    ],
     socialLinks: [
       { name: "GitHub", href: "https://github.com/kimthu38", icon: "gitFork" },
-      { name: "LinkedIn", href: "https://www.linkedin.com/in/thuntk", icon: "share" },
+      {
+        name: "LinkedIn",
+        href: "https://www.linkedin.com/in/thuntk",
+        icon: "share",
+      },
       { name: "Email", href: "mailto:kimthu38.nt@gmail.com", icon: "mail" },
     ],
   },
@@ -26,17 +36,33 @@ export const portfolioData: PortfolioData = {
     { label: "Contact", href: "#contact" },
   ],
   skills: [
-    { name: "TypeScript", icon: "code", category: "languages" },
+    // Languages
+    { name: "TypeScript", icon: "typescript", category: "languages" },
     { name: "JavaScript", icon: "javascript", category: "languages" },
-    { name: "HTML", icon: 'html', category: "languages" },
-    { name: "React", icon: "layers", category: "frameworks" },
-    { name: "Next.js", icon: "globe", category: "frameworks" },
-    { name: "Tailwind CSS", icon: "sparkles", category: "frameworks" },
-    { name: "Framer Motion", icon: "zap", category: "frameworks" },
-    { name: "Node.js", icon: "server", category: "tools" },
-    { name: "PostgreSQL", icon: "database", category: "tools" },
-    { name: "Git", icon: "gitBranch", category: "tools" },
-    { name: "Figma", icon: "penTool", category: "tools" },
+    { name: "HTML", icon: "html", category: "languages" },
+    { name: "CSS", icon: "css", category: "languages" },
+
+    // Frameworks & Libraries
+    { name: "React", icon: "react", category: "frameworks" },
+    { name: "Next.js", icon: "nextjs", category: "frameworks" },
+    { name: "Vue.js", icon: "vuejs", category: "frameworks" },
+    { name: "Angular", icon: "angular", category: "frameworks" },
+
+    { name: "Tailwind CSS", icon: "tailwind", category: "frameworks" },
+    { name: "Framer Motion", icon: "framer", category: "frameworks" },
+    { name: "RxJS", icon: "rxjs", category: "frameworks" },
+    { name: "Pinia", icon: "pinia", category: "frameworks" },
+    { name: "zustand", icon: "zustand", category: "frameworks" },
+    { name: "React Query", icon: "reactQuery", category: "frameworks" },
+    { name: "Redux", icon: "redux", category: "frameworks" },
+    // Tools
+    { name: "Webpack", icon: "webpack", category: "tools" },
+    { name: "Vite", icon: "vite", category: "tools" },
+    { name: "ESLint", icon: "eslint", category: "tools" },
+    { name: "Node.js", icon: "nodejs", category: "tools" },
+    { name: "MongoDB", icon: "mongodb", category: "tools" },
+    { name: "Git", icon: "gitLogo", category: "tools" },
+    { name: "Figma", icon: "figma", category: "tools" },
   ],
   projects: [
     {
@@ -47,7 +73,7 @@ export const portfolioData: PortfolioData = {
         "Developed reusable chart components with optimized rendering performance.",
         "Created responsive analytical interfaces for enterprise reporting systems.",
       ],
-      tags: ["ReactJS", "Chart Libraries", "JavaScript"],
+      tags: ["ReactJS", "Chart Libraries", "Redux"],
       featured: true,
     },
     {
@@ -58,7 +84,7 @@ export const portfolioData: PortfolioData = {
         "Implemented responsive UI components optimized for real-time interactions.",
         "Enhanced communication workflows and application responsiveness.",
       ],
-      tags: ["ReactJS", "WebSocket", "JavaScript"],
+      tags: ["ReactJS", "WebSocket", "React Query"],
       featured: true,
     },
     {
@@ -69,7 +95,7 @@ export const portfolioData: PortfolioData = {
         "Redesigned UI/UX for enhanced usability and workflow efficiency.",
         "Built modular frontend architecture ensuring scalability and maintainability.",
       ],
-      tags: ["Angular", "Node.js"],
+      tags: ["Angular", "Node.js", "mongoDB"],
       featured: true,
     },
     {
@@ -80,7 +106,7 @@ export const portfolioData: PortfolioData = {
         "Developed location-based features and dynamic map visualizations.",
         "Enhanced user experience with responsive mapping interactions.",
       ],
-      tags: ["Vue.js", "OpenLayers"],
+      tags: ["Vue.js","Pinia", "OpenLayers"],
       featured: true,
     },
   ],

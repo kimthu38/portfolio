@@ -29,6 +29,17 @@ export function About() {
                 {paragraph}
               </p>
             ))}
+
+            <ul className="list-inside list-disc space-y-2 pt-2 marker:text-amber-400">
+              {personal.summary.map((point) => (
+                <li
+                  key={point.slice(0, 32)}
+                  className="text-sm text-foreground/50"
+                >
+                  {point}
+                </li>
+              ))}
+            </ul>
           </motion.div>
 
           <motion.div

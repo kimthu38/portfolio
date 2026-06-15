@@ -12,9 +12,6 @@ export function Footer() {
           <span className="text-foreground/40">{personal.name}</span>. All
           rights reserved.
         </p>
-        <p className="text-xs text-foreground/20">
-          Built with Next.js & Tailwind CSS
-        </p>
       </div>
     </footer>
   );
