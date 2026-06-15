@@ -1,9 +1,9 @@
 "use client";
 
-import { portfolioData } from "@/data/portfolioData";
 import { SectionHeading } from "@/components/SectionHeading";
+import { portfolioData } from "@/data/portfolioData";
 import { motion } from "framer-motion";
-import { MapPin } from "lucide-react";
+import { Briefcase, MapPin } from "lucide-react";
 
 export function About() {
   const { personal } = portfolioData;
@@ -11,36 +11,68 @@ export function About() {
   return (
     <section id="about" className="py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          label="About"
-          title="Building the web"
-          description="A quick look at who I am and what drives my work."
-        />
+        <SectionHeading label="About" title="Building the web" />
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-          className="max-w-3xl"
-        >
-          <div className="rounded-2xl border border-zinc-200 bg-white p-6 sm:p-8 dark:border-zinc-800 dark:bg-zinc-900/40">
-            <div className="mb-6 flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
-              <MapPin className="size-4 text-violet-400" />
-              {personal.location}
+        <div className="grid gap-12 lg:grid-cols-[1fr_280px]">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5 }}
+            className="space-y-5"
+          >
+            {personal.about.map((paragraph) => (
+              <p
+                key={paragraph.slice(0, 32)}
+                className="text-base leading-relaxed text-foreground/55"
+              >
+                {paragraph}
+              </p>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="flex flex-col gap-3"
+          >
+            <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-5">
+              <p className="mb-1.5 flex items-center gap-1.5 text-xs text-foreground/30">
+                <MapPin className="size-3.5 text-amber-400/50" />
+                Location
+              </p>
+              <p className="text-sm font-medium text-foreground/70">
+                {personal.location}
+              </p>
             </div>
-            <div className="space-y-4">
-              {personal.about.map((paragraph) => (
-                <p
-                  key={paragraph.slice(0, 32)}
-                  className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400"
-                >
-                  {paragraph}
-                </p>
-              ))}
+
+            <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-5">
+              <p className="mb-1.5 flex items-center gap-1.5 text-xs text-foreground/30">
+                <Briefcase className="size-3.5 text-amber-400/50" />
+                Status
+              </p>
+              <p className="text-sm font-medium text-amber-400">
+                Open to opportunities
+              </p>
             </div>
-          </div>
-        </motion.div>
+
+            <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-5">
+              <p className="mb-2 text-xs text-foreground/30">Focus areas</p>
+              <div className="flex flex-wrap gap-1.5">
+                {["React", "Next.js", "TypeScript", "Performance"].map((t) => (
+                  <span
+                    key={t}
+                    className="rounded-full border border-amber-400/20 px-2.5 py-0.5 text-xs font-medium text-amber-400/70"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

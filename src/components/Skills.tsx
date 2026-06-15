@@ -6,28 +6,11 @@ import { getIcon } from "@/lib/icons";
 import type { Skill } from "@/types";
 import { motion } from "framer-motion";
 
-const GROUPS: { key: Skill["category"]; label: string }[] = [
-  { key: "languages", label: "Languages" },
-  { key: "frameworks", label: "Frameworks & Libraries" },
-  { key: "tools", label: "Tools & Platforms" },
+const GROUPS: { key: Skill["category"]; label: string; speed: number }[] = [
+  { key: "languages", label: "Languages", speed: 22 },
+  { key: "frameworks", label: "Frameworks & Libraries", speed: 28 },
+  { key: "tools", label: "Tools & Platforms", speed: 24 },
 ];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.06 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
 
 export function Skills() {
   const { skills } = portfolioData;
@@ -35,50 +18,67 @@ export function Skills() {
   return (
     <section id="skills" className="py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          label="Skills"
-          title="Technologies I work with"
-          description="The tools and frameworks I use to build modern web experiences."
-        />
+        <SectionHeading label="Skills" title="Technologies I work with" />
+      </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          className="space-y-10"
-        >
-          {GROUPS.map((group) => {
-            const groupSkills = skills.filter((s) => s.category === group.key);
-            return (
-              <motion.div key={group.key} variants={itemVariants}>
-                <h3 className="mb-4 text-xs font-semibold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+      <div className="space-y-10">
+        {GROUPS.map((group, groupIndex) => {
+          const groupSkills = skills.filter((s) => s.category === group.key);
+          const isReverse = groupIndex % 2 === 1;
+          // Duplicate to make a seamless loop
+          const items = [...groupSkills, ...groupSkills, ...groupSkills, ...groupSkills];
+
+          return (
+            <motion.div
+              key={group.key}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: groupIndex * 0.1 }}
+            >
+              {/* Group label */}
+              <div className="mx-auto mb-5 max-w-6xl px-4 sm:px-6 lg:px-8">
+                <p className="text-xs font-semibold tracking-[0.18em] text-foreground/30 uppercase">
                   {group.label}
-                </h3>
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-                  {groupSkills.map((skill) => {
+                </p>
+              </div>
+
+              {/* Track with fade edges */}
+              <div className="relative overflow-hidden">
+                <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-background to-transparent" />
+                <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-background to-transparent" />
+
+                <div
+                  className="flex w-max gap-3 py-1"
+                  style={{
+                    animation: `${isReverse ? "marquee-reverse" : "marquee"} ${group.speed}s linear infinite`,
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLDivElement).style.animationPlayState = "paused";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLDivElement).style.animationPlayState = "running";
+                  }}
+                >
+                  {items.map((skill, i) => {
                     const Icon = getIcon(skill.icon);
                     return (
-                      <motion.div
-                        key={skill.name}
-                        variants={itemVariants}
-                        whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                        className="group flex flex-col items-center gap-3 rounded-xl border border-zinc-200 bg-white p-5 transition-colors hover:border-violet-500/30 hover:bg-violet-500/5 dark:border-zinc-800 dark:bg-zinc-900/40"
+                      <div
+                        key={`${skill.name}-${i}`}
+                        className="flex items-center gap-2.5 rounded-full border border-white/[0.08] bg-white/[0.025] px-5 py-2.5 transition-colors hover:border-amber-400/30 hover:bg-amber-400/[0.05] cursor-default"
                       >
-                        <div className="flex size-10 items-center justify-center rounded-lg bg-violet-500/10 text-violet-400 transition-colors group-hover:bg-violet-500/20">
-                          <Icon className="size-5" />
-                        </div>
-                        <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                        <Icon className="size-4 shrink-0 text-amber-400/60" />
+                        <span className="whitespace-nowrap text-sm font-medium text-foreground/60">
                           {skill.name}
                         </span>
-                      </motion.div>
+                      </div>
                     );
                   })}
                 </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

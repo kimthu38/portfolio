@@ -6,135 +6,105 @@ import { motion } from "framer-motion";
 import { ExternalLink, GitFork } from "lucide-react";
 import Image from "next/image";
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
-
 export function Projects() {
   const { projects } = portfolioData;
 
   return (
     <section id="projects" className="py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          label="Projects"
-          title="Featured projects"
-          description="A collection of projects that showcase my skills in modern frontend development."
-        />
+        <SectionHeading label="Projects" title="Featured work" />
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
-          className="grid gap-6 sm:grid-cols-2"
-        >
-          {projects.map((project) => (
+        <div>
+          {projects.map((project, index) => (
             <motion.article
               key={project.id}
-              variants={cardVariants}
-              whileHover={{ y: -8, transition: { duration: 0.25 } }}
-              className="group overflow-hidden rounded-2xl border border-zinc-200 bg-white transition-shadow hover:border-zinc-300 hover:shadow-xl hover:shadow-violet-500/5 dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-zinc-700"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: index * 0.07 }}
+              className="group border-t border-white/[0.07] py-10 last:border-b transition-colors hover:border-amber-400/20"
             >
-              {project.image && project.imageAlt ? (
-                <div className="relative aspect-video overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.imageAlt}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-zinc-950/80 via-transparent to-transparent" />
-                  {project.featured && (
-                    <span className="absolute top-4 left-4 rounded-full border border-violet-500/30 bg-violet-500/20 px-3 py-1 text-xs font-medium text-violet-300">
-                      Featured
-                    </span>
+              <div className="grid gap-6 sm:grid-cols-[auto_1fr]">
+                {/* Number */}
+                <span className="hidden text-6xl font-extrabold leading-none text-foreground/[0.06] transition-colors group-hover:text-amber-400/[0.14] select-none sm:block">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
+                {/* Content */}
+                <div>
+                  {project.image && project.imageAlt && (
+                    <div className="relative mb-5 aspect-video overflow-hidden rounded-xl">
+                      <Image
+                        src={project.image}
+                        alt={project.imageAlt}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 640px) 100vw, 60vw"
+                      />
+                    </div>
                   )}
-                </div>
-              ) : (
-                <div className="relative h-20 overflow-hidden bg-gradient-to-br from-violet-500/10 via-indigo-500/5 to-violet-500/10">
-                  <div className="absolute -right-4 -bottom-4 size-32 rounded-full bg-violet-500/10 blur-2xl" />
-                  <div className="absolute -left-4 -top-4 size-24 rounded-full bg-indigo-500/10 blur-2xl" />
-                  {project.featured && (
-                    <span className="absolute top-4 left-4 rounded-full border border-violet-500/30 bg-violet-500/20 px-3 py-1 text-xs font-medium text-violet-300">
-                      Featured
-                    </span>
-                  )}
-                </div>
-              )}
 
-              <div className="p-6">
-                <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">
-                  {project.title}
-                </h3>
-
-                <ul className="mt-3 space-y-1.5">
-                  {project.description.map((point, i) => (
-                    <li
-                      key={i}
-                      className="flex gap-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400"
-                    >
-                      <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-violet-400" />
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-md border border-zinc-200 bg-zinc-100 px-2.5 py-1 text-xs font-medium text-zinc-700 dark:border-zinc-700/60 dark:bg-zinc-800/60 dark:text-zinc-300"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {(project.githubUrl || project.liveUrl) && (
-                  <div className="mt-6 flex items-center gap-4">
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-medium text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
-                      >
-                        <GitFork className="size-4" />
-                        Code
-                      </a>
-                    )}
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-sm font-medium text-violet-400 transition-colors hover:text-violet-300"
-                      >
-                        <ExternalLink className="size-4" />
-                        Live Demo
-                      </a>
+                  <div className="flex flex-wrap items-start justify-between gap-3">
+                    <h3 className="text-xl font-semibold text-foreground transition-colors group-hover:text-amber-400">
+                      {project.title}
+                    </h3>
+                    {(project.githubUrl || project.liveUrl) && (
+                      <div className="flex items-center gap-3">
+                        {project.githubUrl && (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 text-xs font-medium text-foreground/40 transition-colors hover:text-foreground"
+                          >
+                            <GitFork className="size-3.5" />
+                            Code
+                          </a>
+                        )}
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1.5 text-xs font-medium text-amber-400/70 transition-colors hover:text-amber-300"
+                          >
+                            <ExternalLink className="size-3.5" />
+                            Live
+                          </a>
+                        )}
+                      </div>
                     )}
                   </div>
-                )}
+
+                  {/* Tech tags */}
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-amber-400/15 px-3 py-0.5 text-xs font-medium text-foreground/40"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Bullet points */}
+                  <ul className="mt-5 space-y-2">
+                    {project.description.map((point, i) => (
+                      <li
+                        key={i}
+                        className="flex gap-3 text-sm leading-relaxed text-foreground/50"
+                      >
+                        <span className="mt-[0.45rem] size-1 shrink-0 rounded-full bg-amber-400/50" />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </motion.article>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

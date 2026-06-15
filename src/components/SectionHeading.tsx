@@ -8,27 +8,26 @@ interface SectionHeadingProps {
   description?: string;
 }
 
-export function SectionHeading({
-  label,
-  title,
-  description,
-}: SectionHeadingProps) {
+export function SectionHeading({ label, title, description }: SectionHeadingProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.5 }}
-      className="mb-12 max-w-2xl"
+      className="mb-16 max-w-2xl"
     >
-      <p className="mb-2 text-sm font-medium tracking-widest text-violet-400 uppercase">
-        {label}
-      </p>
-      <h2 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-zinc-50">
+      <div className="mb-4 flex items-center gap-3">
+        <div className="h-px w-8 bg-amber-400" />
+        <p className="text-xs font-semibold tracking-[0.2em] text-amber-400 uppercase">
+          {label}
+        </p>
+      </div>
+      <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
         {title}
       </h2>
       {description && (
-        <p className="mt-4 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+        <p className="mt-4 text-base leading-relaxed text-foreground/50">
           {description}
         </p>
       )}

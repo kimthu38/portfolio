@@ -56,17 +56,15 @@ export default function RootLayout({
         figtree.variable,
       )}
     >
-      <body
-        className={cn(
-          "min-h-screen bg-zinc-50 font-sans text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-50",
-        )}
-      >
+      <body className={cn("min-h-screen bg-background font-sans text-foreground antialiased")}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
+          {/* Amber accent line at very top */}
+          <div className="pointer-events-none fixed left-0 right-0 top-0 z-[60] h-px bg-gradient-to-r from-transparent via-amber-400/60 to-transparent" />
           {children}
         </ThemeProvider>
       </body>
