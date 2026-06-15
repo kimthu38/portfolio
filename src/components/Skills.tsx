@@ -41,7 +41,7 @@ export function Skills() {
                     return (
                       <div
                         key={skill.name}
-                        className="flex items-center gap-2.5 rounded-full border border-white/[0.08] bg-white/[0.025] px-5 md:px-8 py-2.5 md:py-4 transition-colors hover:border-amber-400/30 hover:bg-amber-400/[0.05] cursor-default"
+                        className="flex items-center gap-2.5 rounded-full border border-foreground/5 dark:border-white/[0.08] bg-white/[0.025] px-5 md:px-8 py-2.5 md:py-4 hover:shadow-lg hover:shadow-amber-400/20 transition-colors hover:border-amber-400/30 hover:bg-amber-400/[0.05] cursor-default"
                       >
                         <Icon className="size-4 md:size-5 shrink-0 text-amber-400/60" />
                         <span className="text-sm md:text-base font-medium text-foreground/60">

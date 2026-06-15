@@ -5,6 +5,9 @@ import { getIcon } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { ArrowRight, MapPin } from "lucide-react";
+import { Button } from "./ui/button";
+import Image from "next/image";
+import OrangeImage from "@/assets/images/orange.webp";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 32 },
@@ -110,13 +113,15 @@ export function Hero() {
               variants={fadeUp}
               className="mt-10 flex flex-wrap items-center gap-4"
             >
-              <a
-                href="#projects"
-                className="group inline-flex items-center gap-2 rounded-full bg-amber-400 px-6 py-2.5 text-sm font-semibold text-amber-950 shadow-lg shadow-amber-400/20 transition-all hover:bg-amber-300 hover:shadow-amber-300/30"
+              <Button
+                asChild
+                className="group rounded-full px-6 py-2.5 h-auto font-semibold shadow-lg shadow-amber-400/20 hover:shadow-amber-300/30"
               >
-                View Projects
-                <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
-              </a>
+                <a href="#projects">
+                  View Projects
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+                </a>
+              </Button>
               <a
                 href="#contact"
                 className="inline-flex items-center gap-2 rounded-full border border-foreground/10 px-6 py-2.5 text-sm font-semibold text-foreground/60 transition-all hover:border-amber-400/40 hover:text-foreground"
@@ -164,13 +169,23 @@ export function Hero() {
                   i < stats.length - 1 && "border-b border-white/[0.06]",
                 )}
               >
-                <div className="text-4xl font-bold text-amber-400">{stat.value}</div>
+                <div className="text-4xl font-bold text-amber-400">
+                  {stat.value}
+                </div>
                 <div className="mt-1 whitespace-pre-line text-[10px] font-semibold leading-relaxed tracking-[0.15em] text-foreground/30 uppercase">
                   {stat.label}
                 </div>
               </div>
             ))}
           </motion.div>
+
+          <Image
+            src={OrangeImage}
+            alt="Hero illustration"
+            width={300}
+            height={300}
+            className="absolute -bottom-10 -right-20 opacity-70 pointer-events-none select-none"
+          />
         </div>
 
         {/* Scroll indicator */}

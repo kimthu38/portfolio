@@ -4,8 +4,12 @@ import { SectionHeading } from "@/components/SectionHeading";
 import { portfolioData } from "@/data/portfolioData";
 import { motion } from "framer-motion";
 import { Mail, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { SyntheticEvent, useState } from "react";
 import Image from "next/image";
+import CatDevImage from "@/assets/images/cat-dev.webp";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
 
 export function Contact() {
   const { personal } = portfolioData;
@@ -20,9 +24,6 @@ export function Contact() {
     setSubmitted(true);
     (event.target as HTMLFormElement).reset();
   };
-
-  const inputClass =
-    "w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-2.5 text-sm text-foreground placeholder:text-foreground/25 outline-none transition-all focus:border-amber-400/40 focus:bg-amber-400/[0.03] focus:ring-1 focus:ring-amber-400/20";
 
   return (
     <section id="contact" className="py-24 sm:py-32">
@@ -58,11 +59,11 @@ export function Contact() {
               </a>
             </div>
             <Image
-              src="/contact-illustration.svg"
+              src={CatDevImage}
               alt="Contact illustration"
               width={400}
-              height={300}
-              className="w-full max-w-sm opacity-50"
+              height={200}
+              className="h-full max-w-sm rounded-lg object-cover object-top"
             />
           </motion.div>
 
@@ -82,13 +83,12 @@ export function Contact() {
               >
                 Name
               </label>
-              <input
+              <Input
                 id="name"
                 name="name"
                 type="text"
                 required
                 placeholder="Your name"
-                className={inputClass}
               />
             </div>
 
@@ -99,13 +99,12 @@ export function Contact() {
               >
                 Email
               </label>
-              <input
+              <Input
                 id="email"
                 name="email"
                 type="email"
                 required
                 placeholder="you@example.com"
-                className={inputClass}
               />
             </div>
 
@@ -116,21 +115,21 @@ export function Contact() {
               >
                 Message
               </label>
-              <textarea
+              <Textarea
                 id="message"
                 name="message"
                 required
                 rows={5}
                 placeholder="Tell me about your project..."
-                className={`${inputClass} resize-none`}
+                className="resize-none"
               />
             </div>
 
             <div className="flex items-center gap-4">
-              <button
+              <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="inline-flex items-center gap-2 rounded-full bg-amber-400 px-6 py-2.5 text-sm font-semibold text-amber-950 shadow-lg shadow-amber-400/20 transition-all hover:bg-amber-300 disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-full px-6 py-2.5 h-auto font-semibold shadow-lg shadow-amber-400/20"
               >
                 {isSubmitting ? (
                   "Sending…"
@@ -140,7 +139,7 @@ export function Contact() {
                     <Send className="size-4" />
                   </>
                 )}
-              </button>
+              </Button>
 
               {submitted && (
                 <p className="text-sm text-emerald-400">Sent successfully!</p>

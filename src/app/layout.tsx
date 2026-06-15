@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { cn } from "@/lib/utils";
 import { portfolioData } from "@/data/portfolioData";
+import BgLineImage from "@/assets/images/bg-line.webp";
+import Image from "next/image";
 
 const figtree = Figtree({
   subsets: ["latin"],
@@ -56,7 +58,11 @@ export default function RootLayout({
         figtree.variable,
       )}
     >
-      <body className={cn("min-h-screen bg-background font-sans text-foreground antialiased")}>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans text-foreground antialiased",
+        )}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -65,6 +71,13 @@ export default function RootLayout({
         >
           {/* Amber accent line at very top */}
           <div className="pointer-events-none fixed left-0 right-0 top-0 z-[60] h-px bg-gradient-to-r from-transparent via-amber-400/60 to-transparent" />
+          <Image
+            src={BgLineImage}
+            alt="Background line pattern"
+            width={200}
+            height={300}
+            className="pointer-events-none absolute -inset-10 -z-10 h-[300px] w-[200px] object-cover rotate-90 opacity-20"
+          />
           {children}
         </ThemeProvider>
       </body>

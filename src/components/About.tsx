@@ -49,7 +49,7 @@ export function About() {
             transition={{ duration: 0.5, delay: 0.15 }}
             className="flex flex-col gap-3"
           >
-            <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-5">
+            <div className="rounded-xl border dark:border-white/[0.07] bg-white/[0.02] p-5">
               <p className="mb-1.5 flex items-center gap-1.5 text-xs text-foreground/30">
                 <MapPin className="size-3.5 text-amber-400/50" />
                 Location
@@ -59,23 +59,23 @@ export function About() {
               </p>
             </div>
 
-            <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-5">
+            <div className="rounded-xl border dark:border-white/[0.07] bg-white/[0.02] p-5">
               <p className="mb-1.5 flex items-center gap-1.5 text-xs text-foreground/30">
                 <Briefcase className="size-3.5 text-amber-400/50" />
                 Status
               </p>
-              <p className="text-sm font-medium text-amber-400">
+              <p className="text-sm font-semibold text-amber-400">
                 Open to opportunities
               </p>
             </div>
 
-            <div className="rounded-xl border border-white/[0.07] bg-white/[0.02] p-5">
+            <div className="rounded-xl border dark:border-white/[0.07] bg-white/[0.02] p-5">
               <p className="mb-2 text-xs text-foreground/30">Focus areas</p>
               <div className="flex flex-wrap gap-1.5">
                 {["React", "Next.js", "TypeScript", "Performance"].map((t) => (
                   <span
                     key={t}
-                    className="rounded-full border border-amber-400/20 px-2.5 py-0.5 text-xs font-medium text-amber-400/70"
+                    className="rounded-full border border-amber-400/60 dark:border-amber-400/20 px-2.5 py-0.5 text-xs font-medium text-amber-400"
                   >
                     {t}
                   </span>

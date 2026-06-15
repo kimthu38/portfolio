@@ -4,6 +4,7 @@ import { portfolioData } from "@/data/portfolioData";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, Moon, Sun, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -55,27 +56,31 @@ export function Navbar() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <button
+          <Button
             type="button"
+            size="icon"
+            variant="ghost"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             aria-label="Toggle theme"
-            className="flex size-9 items-center justify-center rounded-full border border-foreground/10 text-foreground/40 transition-all hover:border-amber-400/40 hover:text-amber-400"
+            className="rounded-full border border-foreground/10 text-foreground/40 hover:bg-transparent hover:border-amber-400/40 hover:text-amber-400"
           >
             {mounted && theme === "dark" ? (
               <Sun className="size-4" />
             ) : (
               <Moon className="size-4" />
             )}
-          </button>
+          </Button>
 
-          <button
+          <Button
             type="button"
+            size="icon"
+            variant="ghost"
             onClick={() => setIsMobileOpen((o) => !o)}
             aria-label="Toggle menu"
-            className="flex size-9 items-center justify-center rounded-full border border-foreground/10 text-foreground/40 transition-all hover:border-amber-400/40 hover:text-amber-400 md:hidden"
+            className="rounded-full border border-foreground/10 text-foreground/40 hover:bg-transparent hover:border-amber-400/40 hover:text-amber-400 md:hidden"
           >
             {isMobileOpen ? <X className="size-4" /> : <Menu className="size-4" />}
-          </button>
+          </Button>
         </div>
       </nav>
 
