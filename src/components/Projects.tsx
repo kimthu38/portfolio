@@ -15,7 +15,7 @@ export function Projects() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionHeading label="Projects" title="Featured projects" />
 
-        <div className="flex gap-12 flex-col md:flex-row">
+        <div className="flex gap-12 flex-col">
           <div className="flex-1">
             {projects.map((project, index) => (
               <motion.article
@@ -107,13 +107,15 @@ export function Projects() {
               </motion.article>
             ))}
           </div>
-          <Image
-            src={GetShitDoneImage}
-            alt="Background line pattern"
-            width={640}
-            height={360}
-            className="hidden rounded-lg object-contain md:block w-[200px] md:w-[250px] h-auto"
-          />
+          <div className="flex flex-col items-center gap-12 bg-primary/10 dark:bg-transparent rounded-lg p-8">
+            <Image
+              src={GetShitDoneImage}
+              alt="Background line pattern"
+              width={640}
+              height={360}
+              className="hidden self-center object-contain md:block w-[200px] md:w-[250px] h-auto"
+            />
+          </div>
         </div>
       </div>
     </section>

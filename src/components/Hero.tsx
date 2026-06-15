@@ -178,14 +178,19 @@ export function Hero() {
               </div>
             ))}
           </motion.div>
-
-          <Image
-            src={OrangeImage}
-            alt="Hero illustration"
-            width={300}
-            height={300}
-            className="absolute -bottom-10 -right-20 opacity-70 pointer-events-none select-none"
-          />
+          <motion.div
+            initial={{ opacity: 0, y: 24, scale: 0.95 }}
+            animate={{ opacity: 1, y: 100, x: 70, scale: 1 }}
+            transition={{ delay: 0.7, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Image
+              src={OrangeImage}
+              alt="Hero illustration"
+              width={300}
+              height={300}
+              className="absolute -bottom-7 -right-20 opacity-70 pointer-events-none select-none"
+            />
+          </motion.div>
         </div>
 
         {/* Scroll indicator */}
