@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kim Thu — Frontend Developer Portfolio
+
+Personal portfolio website showcasing my projects and experience as a frontend developer.
+
+**Live:** [kim.is-a.dev](https://kim.is-a.dev)
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4, shadcn/ui, Radix UI
+- **Animations:** Framer Motion
+- **Icons:** Hugeicons, Lucide React
+- **Theming:** next-themes (light/dark mode)
+
+## Features
+
+- Single-page layout with smooth scroll navigation
+- Dark / light theme toggle
+- Animated sections using Framer Motion
+- SEO optimized — metadata, Open Graph, sitemap, robots.txt
+- Fully responsive design
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/          # Next.js App Router — layout, page, metadata
+├── components/   # Section components (Hero, About, Skills, Projects, Experience, Contact)
+├── data/         # portfolioData.ts — single source of truth for all content
+├── types/        # TypeScript types
+└── lib/          # Utility helpers
+```
 
-## Learn More
+## Customization
 
-To learn more about Next.js, take a look at the following resources:
+All content (personal info, skills, projects, experience) lives in [`src/data/portfolioData.ts`](src/data/portfolioData.ts). Edit that file to update the site.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
