@@ -66,6 +66,17 @@ export const portfolioData: PortfolioData = {
   ],
   projects: [
     {
+      id: "customer-facing-platform",
+      title: "Customer-Facing Platform",
+      description: [
+        "Developed and maintained a Next.js-based platform with thousands of searchable listings and transaction-related workflows.",
+        "Implemented SSR, SEO optimization, and performance improvements to enhance user experience and search visibility.",
+        "Built scalable frontend architecture with reusable component patterns and state management.",
+      ],
+      tags: ["Next.js", "React", "TypeScript", "Zustand", "TailwindCSS"],
+      featured: true,
+    },
+    {
       id: "data-viz-dashboard",
       title: "Data Visualization Dashboard",
       description: [
@@ -108,6 +119,58 @@ export const portfolioData: PortfolioData = {
       ],
       tags: ["Vue.js","Pinia", "OpenLayers"],
       featured: true,
+    },
+    {
+      id: "case-management",
+      title: "Case Management System",
+      description: [
+        "Built an internal case management system to replace Salesforce, reducing supply expenses for the company.",
+        "Designed and implemented end-to-end case tracking workflows with role-based access control.",
+        "Delivered a scalable, maintainable platform tailored to internal operational requirements.",
+      ],
+      tags: ["React", "TypeScript", "TailwindCSS"],
+      featured: true,
+    },
+    {
+      id: "sg-health-management",
+      title: "Singapore Government Food Safety Management System",
+      description: [
+        "Built a certificate food health and safety management system for the Singapore government.",
+        "Enabled organisations to demonstrate their ability to control food safety hazards and ensure food is safe for human consumption.",
+        "Delivered a robust, accessible frontend as part of a cross-functional government project team.",
+      ],
+      tags: ["Angular","Bootstrap", "RxJS"],
+      featured: true,
+    },
+    {
+      id: "preorder-management",
+      title: "Pre-order & Set Meal Management System",
+      description: [
+        "Developed a pre-order and set meal management platform streamlining food ordering workflows.",
+        "Built intuitive interfaces for menu configuration, order tracking, and management reporting.",
+      ],
+      tags: ["Angular", "Bootstrap", "RxJS"],
+      featured: false,
+    },
+    {
+      id: "vending-payment",
+      title: "Vending Payment System",
+      description: [
+        "Built UI solutions for vending machine operations and transaction analytics.",
+        "Integrated payment gateway and implemented real-time transaction monitoring interfaces.",
+      ],
+      tags: ["Angular", "Material UI", "RxJS"],
+      featured: false,
+    },
+    {
+      id: "smart-agricultural",
+      title: "Smart Agricultural Web Portal",
+      description: [
+        "Designed and developed interfaces for an Agri-controller farm management system.",
+        "Built data visualization and monitoring dashboards for smart agricultural operations.",
+      ],
+      tags: ["Angular", "Bootstrap", "RxJS"],
+      featured: false,
     },
   ],
   experience: [
